@@ -62,7 +62,7 @@ export const Login: React.FC = () => {
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                 <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
               </svg>
-              <span className="font-extrabold text-lg tracking-tight">CampusConnect</span>
+              <span className="font-extrabold text-lg tracking-tight">CampusXchange</span>
             </Link>
 
             <h2 className="text-2xl font-bold leading-tight mb-4">

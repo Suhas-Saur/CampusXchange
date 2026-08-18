@@ -57,7 +57,7 @@ export const Landing: React.FC = () => {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-semibold mb-6"
           >
             <Sparkles className="h-3.5 w-3.5" />
-            <span>Introducing CampusConnect 2.0</span>
+            <span>Introducing CampusXchange 2.0</span>
           </motion.div>
 
           <motion.h1
@@ -184,10 +184,10 @@ export const Landing: React.FC = () => {
         </div>
       </section>
 
-      {/* How CampusConnect Works */}
+      {/* How CampusXchange Works */}
       <section className="py-20 md:py-32 px-4 max-w-7xl mx-auto">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-slate-900">How CampusConnect Works</h2>
+          <h2 className="text-3xl font-bold text-slate-900">How CampusXchange Works</h2>
           <p className="text-slate-500 mt-3 text-sm">Four simple steps to safely access books, calculate math problems, or trace lost cards on campus.</p>
         </div>
 

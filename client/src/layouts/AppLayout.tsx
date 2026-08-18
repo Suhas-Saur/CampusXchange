@@ -184,7 +184,7 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                 <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
               </svg>
               <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-brand-600 to-indigo-800 bg-clip-text text-transparent">
-                CampusConnect
+                CampusXchange
               </span>
             </Link>
 
@@ -357,7 +357,7 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
               <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
             </svg>
             <span className="font-extrabold text-md bg-gradient-to-r from-brand-600 to-indigo-800 bg-clip-text text-transparent">
-              CampusConnect
+              CampusXchange
             </span>
           </Link>
 

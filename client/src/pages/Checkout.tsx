@@ -108,7 +108,7 @@ export const Checkout: React.FC = () => {
             key: keyId,
             amount: Math.round((amount + PLATFORM_FEE) * 100),
             currency: 'INR',
-            name: 'CampusConnect',
+            name: 'CampusXchange',
             description: `Purchase: ${product.title}`,
             order_id: razorpayOrderId,
             handler: async (response: any) => {
@@ -152,11 +152,11 @@ export const Checkout: React.FC = () => {
         // Mock Mode or UPI QR Fallback Mode selected
         // Set mock deep-link intent for mobile and QR code payload
         const merchantUpi = '9901535561@ibl';
-        const upiUrl = `upi://pay?pa=${merchantUpi}&pn=CampusConnect&am=${amount + PLATFORM_FEE}&cu=INR&tr=${razorpayOrderId}`;
+        const upiUrl = `upi://pay?pa=${merchantUpi}&pn=CampusXchange&am=${amount + PLATFORM_FEE}&cu=INR&tr=${razorpayOrderId}`;
         setMockQRData(upiUrl);
         
         // Dynamically trigger the PhonePe mobile payment gateway app immediately
-        const phonepeUrl = `phonepe://pay?pa=${merchantUpi}&pn=CampusConnect&am=${amount + PLATFORM_FEE}&cu=INR&tr=${razorpayOrderId}`;
+        const phonepeUrl = `phonepe://pay?pa=${merchantUpi}&pn=CampusXchange&am=${amount + PLATFORM_FEE}&cu=INR&tr=${razorpayOrderId}`;
         window.location.href = phonepeUrl;
       }
     } catch (err: any) {
@@ -257,10 +257,10 @@ export const Checkout: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {product?.sellerId?.phone && (
+             {product?.sellerId?.phone && (
               <a
                 href={`https://wa.me/91${product.sellerId.phone}?text=${encodeURIComponent(
-                  `Hi! I have just paid ₹${product.price + PLATFORM_FEE} via UPI for your item "${product.title}" on CampusConnect. Let's meet at: ${pickupLocation}!`
+                  `Hi! I have just paid ₹${product.price + PLATFORM_FEE} via UPI for your item "${product.title}" on CampusXchange. Let's meet at: ${pickupLocation}!`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -380,7 +380,7 @@ export const Checkout: React.FC = () => {
           <div className="bg-white border border-slate-100/80 rounded-3xl p-6 shadow-sm space-y-4">
             <h3 className="font-bold text-slate-900 text-sm">Coordinate Campus Pickup</h3>
             <p className="text-slate-500 text-[11px] leading-relaxed">
-              CampusConnect operates locally. You will meet the student directly at a safe, public campus location to receive the product.
+              CampusXchange operates locally. You will meet the student directly at a safe, public campus location to receive the product.
             </p>
             
             <div>
@@ -460,7 +460,7 @@ export const Checkout: React.FC = () => {
                   {/* UPI Intent Buttons for Mobile Devices */}
                   <div className="flex flex-col sm:flex-row gap-2.5 w-full max-w-sm px-4">
                     <a
-                      href={`phonepe://pay?pa=9901535561@ibl&pn=CampusConnect&am=${product.price + PLATFORM_FEE}&cu=INR&tr=${createdOrder.razorpayOrderId}`}
+                      href={`phonepe://pay?pa=9901535561@ibl&pn=CampusXchange&am=${product.price + PLATFORM_FEE}&cu=INR&tr=${createdOrder.razorpayOrderId}`}
                       className="flex-grow bg-[#5f259f] hover:bg-[#4d1e82] text-white font-extrabold py-3 px-4 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-md shadow-violet-500/15 transition-all active:scale-95"
                     >
                       <Zap className="h-4 w-4 fill-white" />
