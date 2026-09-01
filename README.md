@@ -6,10 +6,11 @@ It features a **hybrid data mode** (working seamlessly with either a MongoDB dat
 
 ---
 
-## 🚀 Deployment & Repository Info
+## 🚀 Live Demo
 
+- **Live Demo**: [https://suhas-saur.github.io/CampusXchange](https://suhas-saur.github.io/CampusXchange)
 - **Repository**: [https://github.com/Suhas-Saur/CampusXchange](https://github.com/Suhas-Saur/CampusXchange)
-- **Hosting Platform**: Render / Vercel
+- **Hosting Platform**: GitHub Pages
 - **Production Build Script**: `npm run build` (Compiles both `client` static bundle and `server` TypeScript code)
 - **Production Start Script**: `npm start` (Runs Node.js server with static assets fallback and in-memory mock database mode)
 
