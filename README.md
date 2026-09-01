@@ -1,139 +1,180 @@
-# 🎓 CampusXchange — College Trade & Lost-Found Platform
+<div align="center">
 
-CampusXchange is a private college ecosystem where verified students can trace lost belongings, list and trade marketplace products, execute UPI payments, message each other in real-time, and receive push notifications.
+# 🎓 CampusXchange
+### *Next-Generation College Peer-to-Peer Marketplace & Lost/Found Portal*
 
-It features a **hybrid data mode** (working seamlessly with either a MongoDB database or an in-memory fallback store) and is optimized for direct college peer-to-peer handovers.
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-GitHub_Pages-22c55e?style=for-the-badge&logo=githubpages&logoColor=white)](https://suhas-saur.github.io/CampusXchange/)
+[![Repository](https://img.shields.io/badge/📦_GitHub-CampusXchange-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Suhas-Saur/CampusXchange)
+[![Build Status](https://img.shields.io/badge/Build-Passing-0284c7?style=for-the-badge&logo=vite&logoColor=white)](https://github.com/Suhas-Saur/CampusXchange)
+[![License](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
----
-
-## 🚀 Live Demo
-
-- **Live Demo**: [https://suhas-saur.github.io/CampusXchange](https://suhas-saur.github.io/CampusXchange)
-- **Repository**: [https://github.com/Suhas-Saur/CampusXchange](https://github.com/Suhas-Saur/CampusXchange)
-- **Hosting Platform**: GitHub Pages
-- **Production Build Script**: `npm run build` (Compiles both `client` static bundle and `server` TypeScript code)
-- **Production Start Script**: `npm start` (Runs Node.js server with static assets fallback and in-memory mock database mode)
+</div>
 
 ---
 
-## 🌟 Key Features
+> [!TIP]
+> ### 🌐 **[Click Here to Open the Live Demo](https://suhas-saur.github.io/CampusXchange/)**
+> **Permanent Production URL**: `https://suhas-saur.github.io/CampusXchange/`
+>
+> *Explore full marketplace trading, lost-and-found tracing, PhonePe UPI deep-linking, direct WhatsApp seller routing, and role switcher logins on any desktop or mobile browser!*
+
+---
+
+## 📸 System Architecture & Workflow
+
+```mermaid
+graph TD
+    A["🎒 Verified Student / User"] -->|One-Tap Profile Switcher| B["🔑 Login / Auth Engine"]
+    B --> C["🛒 Marketplace & Lost/Found Portals"]
+    C -->|Pay & Buy Direct Shortcut| D["💳 Checkout Gateway (UPI / PhonePe)"]
+    D -->|UPI Deep-Link / PhonePe App| E["📲 Recipient: 9901535561@ibl"]
+    E -->|Transfer Verification| F["🎉 Payment Success View"]
+    F -->|Direct Redirect| G["💬 WhatsApp Seller Chat (+91)"]
+    F -->|Internal Link| H["💬 Real-Time Campus Chatroom"]
+```
+
+---
+
+## 🌟 Core Features
 
 ### 1. 🔑 Pre-filled Role Switcher Login
-- Access student and administrator accounts in one click using pre-configured logins.
-- Defaults to the **Student Profile** with credentials pre-populated.
-- Click **Admin Profile** to automatically pre-fill the administrator credentials.
+- Switch between **Student** and **Admin** accounts with a single tap.
+- Defaults to the **Student Profile** (`student@lnmiit.ac.in` / `password123`) with credentials pre-populated out-of-the-box.
+- Tap **Admin Profile** to automatically pre-fill administrator credentials (`admin@lnmiit.ac.in` / `password123`).
 
 ### 2. 🛒 Smart Peer-to-Peer Marketplace
-- Complete listings gallery showing available books, calculators, and college supplies.
-- **Pay & Buy Shortcuts**: Skip the product detail page and initiate checkout directly from the marketplace listing card.
-- Click anywhere else on the card to inspect the item description, condition, and location.
+- Comprehensive product gallery displaying textbooks, scientific calculators, laptops, and college supplies.
+- **Pay & Buy Shortcuts**: Skip detail views and jump directly to checkout from listing cards.
 
 ### 3. 📱 Mobile Gateway & UPI Integration
-- Default integration supporting direct transfers to recipient address `9901535561@ibl`.
-- **UPI Deep-Linking**: On mobile, it triggers deep-link prompts (`phonepe://pay`) to launch PhonePe/installed UPI apps directly with prefilled parameters.
-- **UPI QR Fallback**: On desktop, a dynamically generated QR Code is presented alongside a countdown timer.
+- **Direct Recipient Address**: Transfers set to `9901535561@ibl`.
+- **UPI Deep-Linking**: On mobile devices, triggers native application intents (`phonepe://pay`) to launch PhonePe and installed UPI apps instantly.
+- **UPI QR Fallback**: On desktop viewports, renders a real-time QR code alongside a 5-minute checkout timer.
 - **Razorpay Sandbox**: Integrated support for Razorpay payment simulations.
 
 ### 4. 💬 Dynamic Post-Payment Communication Handovers
-- **WhatsApp Chat Direct**: Once a transfer is verified, a green button links the buyer directly to WhatsApp (+91 format) with a pre-filled template message detailing the product, price, and pickup location.
-- **Open Campus Chat**: An alternative button loads the built-in real-time socket-based chatroom between the buyer and the seller.
+- **WhatsApp Direct Chat**: After verification, a styled green button launches WhatsApp (+91) with a pre-filled coordinate message:
+  > *"Hi! I have just paid ₹[Amount] via UPI for your item "[Title]" on CampusXchange. Let's meet at: [Pickup Location]!"*
+- **Open Campus Chat**: Jump into the built-in real-time socket chatroom with the seller.
 
 ### 5. 💼 Seller Applications Dashboard
-- Centered search feature: **`ENTER ITEM ID TO SEE APPLICATIONS:`**
-- Query buy bids/applications for any listing by ID to display buyer details, coordinates, status badges, and request timestamps.
+- Search control: **`ENTER ITEM ID TO SEE APPLICATIONS:`**
+- Inspect buyer applications by product ID with buyer names, emails, meeting coordinates, request statuses (ACCEPTED/PENDING), and timestamps.
 
 ### 6. 📈 Admin Metrics Panels
-- Standardized grid view containing the 6 core indicators:
-  - **TOTAL USERS**
-  - **LOST ITEMS**
-  - **FOUND ITEMS**
-  - **MARKETPLACE ITEMS**
-  - **APPLICATIONS**
-  - **MEETINGS**
-- Full capabilities to delete or pause listings, modify users, and monitor activities.
+- Standardized grid view displaying 6 core operational metrics:
+  `TOTAL USERS` | `LOST ITEMS` | `FOUND ITEMS` | `MARKETPLACE ITEMS` | `APPLICATIONS` | `MEETINGS`
 
 ### 7. 🔌 Database-Free Fallback Mode (100% Offline Coverage)
-- If a local MongoDB instance (`port 27017`) is not running, the application gracefully intercepts connections and operates using an in-memory store.
-- **Self-Healing Sessions**: Re-seeds and restores mock user sessions dynamically upon backend restarts, preventing session invalidation/401 errors.
+- Operates smoothly whether connected to a local MongoDB instance (`port 27017`) or running offline via an in-memory mock collection store.
+- **Self-Healing Sessions**: Automatically restores active mock user sessions upon backend restarts without throwing 401 exceptions.
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: React, Vite, TypeScript, Tailwind CSS, Framer Motion, Lucide Icons, Socket.io-client.
-- **Backend**: Node.js, Express.js, TypeScript, REST API, Socket.io (WebSockets).
-- **Database**: MongoDB (Mongoose) with local/in-memory fallback support.
-- **Auth**: JWT-based bearer authentication with bcryptjs hashing.
+| Layer | Technologies Used |
+|---|---|
+| **Frontend** | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, Lucide Icons, Socket.io-client |
+| **Backend** | Node.js, Express.js, TypeScript, REST API, Socket.io (WebSockets) |
+| **Data Engine** | MongoDB (Mongoose) + In-Memory Fallback Collections |
+| **Authentication** | JWT Bearer Tokens, Bcryptjs Password Hashing |
+| **Deployments** | GitHub Pages (Client SPA) & Render/Vercel (Full-Stack Engine) |
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```text
 CampusXchange/
-├── client/
+├── client/                   # Frontend React + Vite SPA
 │   ├── src/
-│   │   ├── components/       # Core UI inputs, labels
-│   │   ├── context/          # Auth & WebSocket Contexts
-│   │   ├── layouts/          # Navigation Headers & Mobile Menus
-│   │   ├── pages/            # Dashboards, Seller Panel, Checkout, Messages
-│   │   └── services/         # Axios API service (baseURL set to localhost:5000)
+│   │   ├── components/       # UI Buttons, Cards, Inputs
+│   │   ├── context/          # AuthContext & SocketContext
+│   │   ├── layouts/          # Responsive App Navigation Headers & FAB Menus
+│   │   ├── pages/            # Marketplace, Seller Dashboard, Checkout, Messages
+│   │   └── services/         # Axios API service (dynamic VITE_API_URL baseURL)
 │   ├── index.html
 │   └── vite.config.ts
-├── server/
+├── server/                   # Backend Express + Node.js Application
 │   ├── src/
-│   │   ├── config/           # Socket.io gateways, MongoDB connector
-│   │   ├── controllers/      # Route controllers (Auth, Payments, Products, Messages)
-│   │   ├── middleware/       # JWT Auth protectors, Multer file uploaders
-│   │   ├── models/           # Mongoose schemas
-│   │   ├── utils/            # In-memory mock database collections
-│   │   └── server.ts         # Runner bootloader file
+│   │   ├── config/           # Database Connectors & WebSockets
+│   │   ├── controllers/      # Route Logic Handlers (Auth, Payments, Products, Messages)
+│   │   ├── middleware/       # JWT Auth & Upload Protectors
+│   │   ├── models/           # Mongoose Schemas
+│   │   ├── utils/            # In-Memory Mock Data Collections
+│   │   └── server.ts         # Runner Entry File (serves static client build in production)
 │   └── tsconfig.json
-├── package.json              # Monorepo runner scripts
-└── .env.example              # Variables template
+├── package.json              # Root Monorepo Scripts
+└── README.md                 # Documentation
 ```
 
 ---
 
-## ⚙️ Setup & Configuration
+## ⚙️ Quick Start & Local Setup
 
-### 1. Environment File (`.env`)
-Create a `.env` file at the project root directory (`/CampusXchange/.env`):
+### 1. Environment Configuration (`.env`)
+Create a `.env` file at the root folder (`/CampusXchange/.env`):
 
 ```env
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/campusconnect
 JWT_SECRET=campusconnect_secure_jwt_token_secret_2026
 
-# College Domain configuration
+# College Validation settings
 COLLEGE_NAME="LNM Institute of Information Technology"
 COLLEGE_EMAIL_DOMAIN="lnmiit.ac.in"
 
-# Razorpay Sandbox Credentials
+# Razorpay Test Credentials
 RAZORPAY_KEY_ID=rzp_test_abc123xyz
 RAZORPAY_KEY_SECRET=def456uvw
 RAZORPAY_WEBHOOK_SECRET=webhooksecret123
 ```
 
 ### 2. Install Dependencies
-Run from the root workspace directory:
 ```bash
 npm run install:all
 ```
 
-### 3. Launch Development Servers
-Start Express (port 5000) and React (port 3000) concurrently:
+### 3. Build & Run Local Servers
 ```bash
+# Start backend (port 5000) and frontend (port 3000) concurrently
 npm run dev
 ```
-Open your browser at **[http://localhost:3000](http://localhost:3000)**.
+Open **`http://localhost:3000`** in your browser.
 
 ---
 
-## 👤 Test Accounts (Pre-seeded)
+## 👤 Pre-Seeded Test Credentials
 
 | Role | Username / Email | Password |
 |---|---|---|
-| **Student** | `student@lnmiit.ac.in` | `password123` |
+| **Student (Default)** | `student@lnmiit.ac.in` | `password123` |
 | **Admin** | `admin@lnmiit.ac.in` | `password123` |
 | **Guest Admin** | `admin@campusconnect.demo` | `password123` |
+
+---
+
+## 🚀 Deployment Instructions
+
+### Production Build Script
+```bash
+npm run build
+```
+This compiles both the frontend static SPA into `client/dist` and the backend TypeScript files into `server/dist`.
+
+### Production Runner Script
+```bash
+npm start
+```
+Executes `node server/dist/server.js` which serves both API endpoints and static client assets on port `5000`.
+
+---
+
+<div align="center">
+
+**Built with ❤️ for Campus Peer-to-Peer Trading**
+
+[🌐 Open Live Demo](https://suhas-saur.github.io/CampusXchange/) • [📦 GitHub Repository](https://github.com/Suhas-Saur/CampusXchange)
+
+</div>
