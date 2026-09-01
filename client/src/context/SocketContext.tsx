@@ -25,7 +25,8 @@ export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
 
     // Connect to websocket server with current user token
-    const socketInstance = io('http://localhost:5000', {
+    const targetUrl = (import.meta as any).env?.VITE_API_URL || ((import.meta as any).env?.DEV ? 'http://localhost:5000' : window.location.origin);
+    const socketInstance = io(targetUrl, {
       auth: {
         token: user.token
       },
