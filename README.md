@@ -1,8 +1,17 @@
-# 🎓 CampusConnect — College Trade & Lost-Found Platform
+# 🎓 CampusXchange — College Trade & Lost-Found Platform
 
-CampusConnect is a private college ecosystem where verified students can trace lost belongings, list and trade marketplace products, execute UPI payments, message each other in real-time, and receive push notifications.
+CampusXchange is a private college ecosystem where verified students can trace lost belongings, list and trade marketplace products, execute UPI payments, message each other in real-time, and receive push notifications.
 
 It features a **hybrid data mode** (working seamlessly with either a MongoDB database or an in-memory fallback store) and is optimized for direct college peer-to-peer handovers.
+
+---
+
+## 🚀 Deployment & Repository Info
+
+- **Repository**: [https://github.com/Suhas-Saur/CampusXchange](https://github.com/Suhas-Saur/CampusXchange)
+- **Hosting Platform**: Render / Vercel
+- **Production Build Script**: `npm run build` (Compiles both `client` static bundle and `server` TypeScript code)
+- **Production Start Script**: `npm start` (Runs Node.js server with static assets fallback and in-memory mock database mode)
 
 ---
 
