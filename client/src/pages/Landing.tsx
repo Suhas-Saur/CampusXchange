@@ -94,6 +94,14 @@ export const Landing: React.FC = () => {
             >
               <span>Lost & Found</span>
             </Link>
+            {!user && (
+              <Link
+                to="/login"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-indigo-900 hover:bg-indigo-950 active:scale-98 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-indigo-900/20 transition-all text-base"
+              >
+                <span>⚡ Instant Demo Login</span>
+              </Link>
+            )}
           </motion.div>
         </motion.div>
 

@@ -110,6 +110,30 @@ export const Login: React.FC = () => {
               </div>
             )}
 
+            {/* Instant Direct Demo Login */}
+            <div className="grid grid-cols-2 gap-2.5 mb-6">
+              <button
+                type="button"
+                onClick={async () => {
+                  await login('student@lnmiit.ac.in', 'password123');
+                  navigate('/dashboard');
+                }}
+                className="w-full flex items-center justify-center gap-1.5 bg-brand-600 hover:bg-brand-700 active:scale-98 text-white font-bold py-2.5 px-3 rounded-xl shadow-md shadow-brand-500/20 text-xs transition-all"
+              >
+                ⚡ Instant Student Login
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  await login('admin@lnmiit.ac.in', 'password123');
+                  navigate('/dashboard');
+                }}
+                className="w-full flex items-center justify-center gap-1.5 bg-indigo-900 hover:bg-indigo-950 active:scale-98 text-white font-bold py-2.5 px-3 rounded-xl shadow-md shadow-indigo-900/20 text-xs transition-all"
+              >
+                ⚡ Instant Admin Login
+              </button>
+            </div>
+
             {/* Role Switcher Tabs */}
             <div className="flex bg-slate-100 p-1 rounded-xl mb-6 max-w-xs">
               <button

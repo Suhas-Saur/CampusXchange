@@ -13,6 +13,7 @@ import {
   ExternalLink,
   MapPin,
   Smartphone,
+  Copy,
   Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -36,6 +37,17 @@ export const Checkout: React.FC = () => {
   // UPI QR Fallback states
   const [upiTimer, setUpiTimer] = useState<number>(300); // 5 minutes in seconds
   const [mockQRData, setMockQRData] = useState<string>('');
+  const [copiedUpi, setCopiedUpi] = useState<boolean>(false);
+
+  const handleCopyUpi = () => {
+    try {
+      navigator.clipboard.writeText('9901535561@ibl');
+    } catch (e) {
+      console.log('Clipboard write fallback');
+    }
+    setCopiedUpi(true);
+    setTimeout(() => setCopiedUpi(false), 3000);
+  };
   
   // Final Payment Status States
   const [paymentStatus, setPaymentStatus] = useState<'pending' | 'success' | 'failed'>('pending');
@@ -457,23 +469,34 @@ export const Checkout: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* UPI Intent Buttons for Mobile Devices */}
-                  <div className="flex flex-col sm:flex-row gap-2.5 w-full max-w-sm px-4">
-                    <a
-                      href={`phonepe://pay?pa=9901535561@ibl&pn=CampusXchange&am=${product.price + PLATFORM_FEE}&cu=INR&tr=${createdOrder.razorpayOrderId}`}
-                      className="flex-grow bg-[#5f259f] hover:bg-[#4d1e82] text-white font-extrabold py-3 px-4 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-md shadow-violet-500/15 transition-all active:scale-95"
+                  {/* UPI Intent & App Buttons */}
+                  <div className="flex flex-col gap-2.5 w-full max-w-sm px-4">
+                    <div className="grid grid-cols-2 gap-2">
+                      <a
+                        href={`phonepe://pay?pa=9901535561@ibl&pn=CampusXchange&am=${product.price + PLATFORM_FEE}&cu=INR`}
+                        className="bg-[#5f259f] hover:bg-[#4d1e82] text-white font-extrabold py-3 px-3 rounded-2xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-violet-500/15 transition-all active:scale-95 text-center"
+                      >
+                        <Zap className="h-4 w-4 fill-white shrink-0" />
+                        PhonePe App
+                      </a>
+                      
+                      <a
+                        href={`upi://pay?pa=9901535561@ibl&pn=CampusXchange&am=${product.price + PLATFORM_FEE}&cu=INR`}
+                        className="bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-3 rounded-2xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-brand-500/15 transition-all active:scale-95 text-center"
+                      >
+                        <Smartphone className="h-4 w-4 shrink-0" />
+                        GPay / BHIM / UPI
+                      </a>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleCopyUpi}
+                      className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all"
                     >
-                      <Zap className="h-4 w-4 fill-white" />
-                      Open PhonePe
-                    </a>
-                    
-                    <a
-                      href={mockQRData}
-                      className="flex-grow border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold py-3 px-4 rounded-2xl text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95"
-                    >
-                      <Smartphone className="h-4 w-4" />
-                      Open in UPI App
-                    </a>
+                      <Copy className="h-3.5 w-3.5" />
+                      {copiedUpi ? '✓ UPI ID Copied (9901535561@ibl)' : 'Copy UPI ID (9901535561@ibl)'}
+                    </button>
                   </div>
 
                   {/* QR Image Frame */}
