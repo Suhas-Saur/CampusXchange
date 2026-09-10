@@ -117,6 +117,14 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
     }
   };
 
+  const [isMobileMode, setIsMobileMode] = useState<boolean>(() => localStorage.getItem('mobile_mode_active') === 'true');
+
+  const toggleMobileMode = () => {
+    const next = !isMobileMode;
+    setIsMobileMode(next);
+    localStorage.setItem('mobile_mode_active', next ? 'true' : 'false');
+  };
+
   if (loading) {
     return (
       <div className="flex h-screen w-screen items-center justify-center bg-slate-50">
@@ -245,6 +253,18 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
           </div>
 
           <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={toggleMobileMode}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                isMobileMode
+                  ? 'bg-brand-600 text-white shadow-md shadow-brand-500/20'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              }`}
+            >
+              {isMobileMode ? '📱 Mobile Mode Active' : '📱 Mobile Mode'}
+            </button>
+
             {user ? (
               <>
                 <Link
@@ -361,30 +381,56 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
             </span>
           </Link>
 
-          {user && (
-            <div className="flex items-center gap-2">
-              <Link to="/messages" className="p-2 text-slate-500 rounded-lg relative">
-                <MessageSquare className="h-5 w-5" />
-              </Link>
-              <Link to="/notifications" className="p-2 text-slate-500 rounded-lg relative">
-                <Bell className="h-5 w-5" />
-                {notificationsCount > 0 && (
-                  <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-rose-500 animate-ping"></span>
-                )}
-              </Link>
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleMobileMode}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${
+                isMobileMode ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-700'
+              }`}
+            >
+              📱 Mobile
+            </button>
+
+            {user && (
+              <>
+                <Link to="/messages" className="p-1.5 text-slate-500 rounded-lg relative">
+                  <MessageSquare className="h-5 w-5" />
+                </Link>
+                <Link to="/notifications" className="p-1.5 text-slate-500 rounded-lg relative">
+                  <Bell className="h-5 w-5" />
+                  {notificationsCount > 0 && (
+                    <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-rose-500 animate-ping"></span>
+                  )}
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
-      {/* Main View Workspace */}
-      <main className="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6">
+      {/* Main View Workspace Container */}
+      <main
+        className={`flex-grow w-full mx-auto transition-all ${
+          isMobileMode
+            ? 'max-w-sm sm:max-w-md bg-white border border-slate-200/80 rounded-[32px] shadow-2xl overflow-hidden my-4 p-4 space-y-4 pb-28 min-h-[85vh]'
+            : 'max-w-7xl p-4 md:p-6'
+        }`}
+      >
+        {isMobileMode && (
+          <div className="flex items-center justify-between bg-brand-50 border border-brand-100 px-3.5 py-2 rounded-2xl text-xs font-semibold text-brand-800 mb-2">
+            <span className="flex items-center gap-1.5">📱 Mobile Touch View Active</span>
+            <button onClick={toggleMobileMode} className="text-[11px] underline font-bold text-brand-700">
+              Desktop View
+            </button>
+          </div>
+        )}
         {children}
       </main>
 
       {/* Mobile Floating Action Button (FAB) and Quick Action List */}
       {user && (
-        <div className="fixed bottom-24 right-4 z-40 lg:hidden">
+        <div className={`fixed bottom-24 right-4 z-40 ${isMobileMode ? 'block' : 'lg:hidden'}`}>
           <AnimatePresence>
             {showQuickActionMenu && (
               <>
@@ -463,7 +509,7 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
 
       {/* Mobile Bottom Tab Navigation */}
       {user && (
-        <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-40 block lg:hidden">
+        <nav className={`fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-40 ${isMobileMode ? 'block' : 'block lg:hidden'}`}>
           <div className="h-16 grid grid-cols-5">
             <Link
               to="/dashboard"
