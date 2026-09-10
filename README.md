@@ -4,6 +4,7 @@
 ### *Next-Generation College Peer-to-Peer Marketplace & Lost/Found Portal*
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-GitHub_Pages-22c55e?style=for-the-badge&logo=githubpages&logoColor=white)](https://suhas-saur.github.io/CampusXchange/)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Ready-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/new)
 [![Repository](https://img.shields.io/badge/📦_GitHub-CampusXchange-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Suhas-Saur/CampusXchange)
 [![Build Status](https://img.shields.io/badge/Build-Passing-0284c7?style=for-the-badge&logo=vite&logoColor=white)](https://github.com/Suhas-Saur/CampusXchange)
 [![License](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](https://opensource.org/licenses/MIT)
@@ -14,9 +15,9 @@
 
 > [!TIP]
 > ### 🌐 **[Click Here to Open the Live Demo](https://suhas-saur.github.io/CampusXchange/)**
-> **Permanent Production URL**: `https://suhas-saur.github.io/CampusXchange/`
+> **Permanent GitHub Pages Live URL**: `https://suhas-saur.github.io/CampusXchange/`
 >
-> *Explore full marketplace trading, lost-and-found tracing, PhonePe UPI deep-linking, direct WhatsApp seller routing, and role switcher logins on any desktop or mobile browser!*
+> *Explore full marketplace trading, mobile touch mode, PhonePe UPI deep-linking, direct WhatsApp seller routing, and role switcher logins online!*
 
 ---
 
