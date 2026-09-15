@@ -88,6 +88,39 @@ export const Marketplace: React.FC = () => {
         </div>
       </div>
 
+      {/* Flipkart Horizontal Category Pill Bar */}
+      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 -mx-2 px-2 sm:mx-0 sm:px-0">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setCategory(cat)}
+            className={`shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold transition-all shadow-sm ${
+              category === cat
+                ? 'bg-blue-600 text-white shadow-blue-500/20'
+                : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'
+            }`}
+          >
+            <span>{cat === 'All' ? '⚡ All' : cat === 'Books' ? '📚 Books' : cat === 'Calculators' ? '🧮 Calculators' : cat === 'Electronics' ? '💻 Tech' : cat}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Flipkart Deals Banner */}
+      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 text-white rounded-3xl p-4 sm:p-5 shadow-lg relative overflow-hidden flex flex-col justify-between min-h-[120px]">
+        <div className="relative z-10 space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-full text-[9px] uppercase tracking-wider shadow">
+              DEALS OF THE DAY ⚡
+            </span>
+            <span className="text-[10px] font-semibold text-blue-100">
+              Ends in 03h 42m
+            </span>
+          </div>
+          <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">Up to 60% OFF on Textbooks & Tools</h2>
+          <p className="text-blue-100 text-xs font-medium">Instant Peer-to-Peer UPI Handover on Campus</p>
+        </div>
+      </div>
+
       <div className="flex flex-col lg:flex-row gap-6">
         
         {/* Desktop Filter Sidebar */}
@@ -159,10 +192,11 @@ export const Marketplace: React.FC = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowMobileFilters(true)}
-                className="lg:hidden p-2 text-slate-600 hover:bg-slate-50 border border-slate-200 rounded-xl"
+                className="lg:hidden p-2 text-slate-600 hover:bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-1.5 text-xs font-bold"
                 title="Filters"
               >
-                <SlidersHorizontal className="h-4.5 w-4.5" />
+                <SlidersHorizontal className="h-4 w-4" />
+                <span>Filters</span>
               </button>
 
               <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 text-xs">
@@ -189,19 +223,19 @@ export const Marketplace: React.FC = () => {
             </div>
           </div>
 
-          {/* Listings Grid */}
+          {/* Listings Grid (Flipkart 2-Column Mobile Grid) */}
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="h-72 rounded-3xl border border-slate-100 bg-white p-4 space-y-4">
+                <div key={i} className="h-72 rounded-3xl border border-slate-100 bg-white p-3 space-y-3">
                   <div className="h-40 w-full rounded-2xl skeleton-loader"></div>
-                  <div className="h-5 w-3/4 rounded skeleton-loader"></div>
-                  <div className="h-4 w-1/2 rounded skeleton-loader"></div>
+                  <div className="h-4 w-3/4 rounded skeleton-loader"></div>
+                  <div className="h-3 w-1/2 rounded skeleton-loader"></div>
                 </div>
               ))}
             </div>
           ) : products.length === 0 ? (
-            <div className="bg-white border border-slate-100 rounded-3xl py-20 text-center max-w-xl mx-auto shadow-sm">
+            <div className="bg-white border border-slate-100 rounded-3xl py-16 text-center max-w-xl mx-auto shadow-sm">
               <Inbox className="h-16 w-16 text-slate-300 mx-auto mb-4" />
               <h3 className="font-extrabold text-slate-800 text-lg">No listings matches found</h3>
               <p className="text-slate-500 text-xs mt-1.5 px-6">
@@ -219,23 +253,28 @@ export const Marketplace: React.FC = () => {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
               {products.map((p) => (
                 <div
                   key={p._id}
                   onClick={() => navigate(`/marketplace/${p._id}`)}
-                  className="bg-white border border-slate-100 rounded-3xl p-3 flex flex-col justify-between shadow-sm card-hover group cursor-pointer"
+                  className="bg-white border border-slate-200/80 rounded-2xl p-2.5 sm:p-3 flex flex-col justify-between shadow-sm card-hover group cursor-pointer relative"
                 >
                   <div className="relative">
+                    {/* Flipkart Deal Tag */}
+                    <span className="absolute top-2 left-2 z-10 bg-amber-400 text-slate-950 font-black px-2 py-0.5 rounded-md text-[9px] uppercase tracking-wider shadow">
+                      HOT DEAL
+                    </span>
+
                     {/* Saved favorite toggle */}
                     <button
                       onClick={(e) => toggleSaveItem(p._id, e)}
-                      className="absolute top-2.5 right-2.5 p-2 rounded-xl backdrop-blur-md border z-10 transition-all bg-white/80 border-white/50 text-slate-500 hover:text-rose-500"
+                      className="absolute top-2 right-2 p-1.5 rounded-full backdrop-blur-md border z-10 transition-all bg-white/90 border-slate-100 text-slate-400 hover:text-rose-500 shadow-sm"
                     >
-                      <Bookmark className={`h-4 w-4 ${savedItems.includes(p._id) ? 'fill-rose-500 text-rose-500' : ''}`} />
+                      <Bookmark className={`h-3.5 w-3.5 ${savedItems.includes(p._id) ? 'fill-rose-500 text-rose-500' : ''}`} />
                     </button>
 
-                    <div className="h-44 w-full rounded-2xl overflow-hidden bg-slate-100">
+                    <div className="h-32 sm:h-44 w-full rounded-xl overflow-hidden bg-slate-100">
                       <img
                         src={p.images[0] || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400'}
                         alt={p.title}
@@ -243,23 +282,23 @@ export const Marketplace: React.FC = () => {
                       />
                     </div>
 
-                    <div className="px-1 mt-3">
-                      <span className="inline-block px-2.5 py-0.5 rounded-lg bg-brand-50 border border-brand-100/50 text-brand-700 text-[9px] font-bold uppercase tracking-wider">
+                    <div className="mt-2.5">
+                      <span className="inline-block px-2 py-0.5 rounded bg-brand-50 text-brand-700 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider">
                         {p.category}
                       </span>
-                      <h3 className="font-bold text-slate-900 text-sm mt-2 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                      <h3 className="font-bold text-slate-900 text-xs sm:text-sm mt-1 line-clamp-2 group-hover:text-brand-600 transition-colors leading-snug">
                         {p.title}
                       </h3>
-                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                        {p.description}
-                      </p>
                     </div>
                   </div>
 
-                  <div className="px-1 mt-4 pt-3 border-t border-slate-50 flex items-center justify-between">
-                    <div>
-                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wide">PRICE</p>
-                      <p className="font-extrabold text-slate-950 text-lg">₹{p.price}</p>
+                  <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-1">
+                    <div className="text-left">
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-black text-slate-950 text-sm sm:text-base">₹{p.price}</span>
+                        <span className="line-through text-slate-400 text-[9px]">₹{Math.round(p.price * 1.5)}</span>
+                      </div>
+                      <span className="text-emerald-600 font-extrabold text-[9px] block">33% off</span>
                     </div>
                     
                     <button
@@ -267,7 +306,7 @@ export const Marketplace: React.FC = () => {
                         e.stopPropagation();
                         navigate(`/checkout?productId=${p._id}`);
                       }}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-[11px] py-2.5 px-4 rounded-xl shadow-md shadow-emerald-500/10 transition-all active:scale-95"
+                      className="bg-amber-400 hover:bg-amber-500 active:scale-95 text-slate-950 font-black text-[10px] py-2 px-2.5 rounded-lg shadow transition-all shrink-0"
                     >
                       Pay & Buy
                     </button>

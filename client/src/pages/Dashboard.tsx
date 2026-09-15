@@ -207,35 +207,40 @@ export const Dashboard: React.FC = () => {
               <p className="text-xs text-slate-400 mt-1">Be the first to list a necessity in the college!</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
               {recentProducts.map((p) => (
                 <Link
                   key={p._id}
                   to={`/marketplace/${p._id}`}
-                  className="bg-white border border-slate-100 rounded-2xl p-3 flex flex-col justify-between shadow-sm card-hover group"
+                  className="bg-white border border-slate-200/80 rounded-2xl p-2.5 flex flex-col justify-between shadow-sm card-hover group text-left relative"
                 >
                   <div>
-                    <div className="h-36 w-full rounded-xl overflow-hidden bg-slate-100 relative">
+                    <div className="h-32 sm:h-36 w-full rounded-xl overflow-hidden bg-slate-100 relative">
+                      <span className="absolute top-1.5 left-1.5 z-10 bg-amber-400 text-slate-950 font-black px-1.5 py-0.5 rounded text-[8px] uppercase">
+                        HOT DEAL
+                      </span>
                       <img
                         src={p.images[0] || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400'}
                         alt={p.title}
                         className="h-full w-full object-cover group-hover:scale-105 transition-all duration-300"
                       />
-                      <span className="absolute top-2 right-2 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-lg text-[9px] font-bold text-slate-700 border border-slate-100 uppercase">
-                        {p.condition.replace('_', ' ')}
-                      </span>
                     </div>
-                    <h3 className="font-bold text-slate-900 text-sm mt-3 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 text-xs sm:text-sm mt-2 line-clamp-2 leading-snug group-hover:text-brand-600 transition-colors">
                       {p.title}
                     </h3>
-                    <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">{p.description}</p>
                   </div>
                   
-                  <div className="flex justify-between items-center mt-4 border-t border-slate-50 pt-3">
-                    <span className="font-bold text-slate-950 text-base">₹{p.price}</span>
-                    <span className="text-[10px] text-slate-400 flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      {p.location}
+                  <div className="flex items-center justify-between mt-3 border-t border-slate-100 pt-2 gap-1">
+                    <div>
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-black text-slate-950 text-xs sm:text-sm">₹{p.price}</span>
+                        <span className="line-through text-slate-400 text-[8px]">₹{Math.round(p.price * 1.5)}</span>
+                      </div>
+                      <span className="text-emerald-600 font-bold text-[8px] block">33% off</span>
+                    </div>
+
+                    <span className="bg-amber-400 text-slate-950 font-black text-[9px] py-1 px-2 rounded shadow">
+                      Buy
                     </span>
                   </div>
                 </Link>
