@@ -410,27 +410,13 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
       </header>
 
       {/* Main View Workspace Container */}
-      <main
-        className={`flex-grow w-full mx-auto transition-all ${
-          isMobileMode
-            ? 'max-w-sm sm:max-w-md bg-white border border-slate-200/80 rounded-[32px] shadow-2xl overflow-hidden my-4 p-4 space-y-4 pb-28 min-h-[85vh]'
-            : 'max-w-7xl p-4 md:p-6'
-        }`}
-      >
-        {isMobileMode && (
-          <div className="flex items-center justify-between bg-brand-50 border border-brand-100 px-3.5 py-2 rounded-2xl text-xs font-semibold text-brand-800 mb-2">
-            <span className="flex items-center gap-1.5">📱 Mobile Touch View Active</span>
-            <button onClick={toggleMobileMode} className="text-[11px] underline font-bold text-brand-700">
-              Desktop View
-            </button>
-          </div>
-        )}
+      <main className="flex-grow w-full max-w-7xl mx-auto px-3 sm:px-6 py-3 md:py-6 pb-28">
         {children}
       </main>
 
       {/* Mobile Floating Action Button (FAB) and Quick Action List */}
       {user && (
-        <div className={`fixed bottom-24 right-4 z-40 ${isMobileMode ? 'block' : 'lg:hidden'}`}>
+        <div className="fixed bottom-20 right-4 z-50">
           <AnimatePresence>
             {showQuickActionMenu && (
               <>
@@ -453,9 +439,9 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                       setShowQuickActionMenu(false);
                       navigate('/sell');
                     }}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-sm font-medium text-left"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-xs font-bold text-left"
                   >
-                    <DollarSign className="h-4.5 w-4.5 text-emerald-500" />
+                    <DollarSign className="h-4 w-4 text-emerald-500" />
                     Sell an Item
                   </button>
                   <button
@@ -463,9 +449,9 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                       setShowQuickActionMenu(false);
                       navigate('/report-lost');
                     }}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-sm font-medium text-left"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-xs font-bold text-left"
                   >
-                    <AlertTriangle className="h-4.5 w-4.5 text-rose-500" />
+                    <AlertTriangle className="h-4 w-4 text-rose-500" />
                     Report Lost Item
                   </button>
                   <button
@@ -473,9 +459,9 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                       setShowQuickActionMenu(false);
                       navigate('/report-found');
                     }}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-sm font-medium text-left"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-xs font-bold text-left"
                   >
-                    <Compass className="h-4.5 w-4.5 text-teal-500" />
+                    <Compass className="h-4 w-4 text-teal-500" />
                     Report Found Item
                   </button>
                   <button
@@ -483,9 +469,9 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                       setShowQuickActionMenu(false);
                       navigate('/seller-dashboard');
                     }}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-sm font-medium text-left"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 hover:text-brand-700 transition-colors text-xs font-bold text-left"
                   >
-                    <LayoutDashboard className="h-4.5 w-4.5 text-brand-500" />
+                    <LayoutDashboard className="h-4 w-4 text-brand-500" />
                     Seller Dashboard
                   </button>
                 </motion.div>
@@ -495,13 +481,13 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
 
           <button
             onClick={() => setShowQuickActionMenu(!showQuickActionMenu)}
-            className="h-14 w-14 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/35 hover:scale-105 active:scale-95 transition-all z-40 relative"
+            className="h-12 w-12 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/35 hover:scale-105 active:scale-95 transition-all z-40 relative"
           >
             <motion.div
               animate={{ rotate: showQuickActionMenu ? 135 : 0 }}
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
             >
-              <Plus className="h-6 w-6" />
+              <Plus className="h-5 w-5" />
             </motion.div>
           </button>
         </div>
@@ -509,12 +495,12 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
 
       {/* Mobile Bottom Tab Navigation */}
       {user && (
-        <nav className={`fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-40 ${isMobileMode ? 'block' : 'block lg:hidden'}`}>
-          <div className="h-16 grid grid-cols-5">
+        <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200/80 z-40 block lg:hidden shadow-lg">
+          <div className="h-14 grid grid-cols-4">
             <Link
               to="/dashboard"
-              className={`flex flex-col items-center justify-center text-xs transition-colors ${
-                isActive('/dashboard') ? 'text-brand-600' : 'text-slate-400'
+              className={`flex flex-col items-center justify-center text-[10px] font-bold transition-colors ${
+                isActive('/dashboard') ? 'text-brand-600 font-extrabold' : 'text-slate-500'
               }`}
             >
               <LayoutDashboard className="h-5 w-5 mb-0.5" />
@@ -522,20 +508,17 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
             </Link>
             <Link
               to="/lost-found"
-              className={`flex flex-col items-center justify-center text-xs transition-colors ${
-                isActive('/lost-found') ? 'text-brand-600' : 'text-slate-400'
+              className={`flex flex-col items-center justify-center text-[10px] font-bold transition-colors ${
+                isActive('/lost-found') ? 'text-brand-600 font-extrabold' : 'text-slate-500'
               }`}
             >
               <AlertTriangle className="h-5 w-5 mb-0.5" />
               <span>Lost/Found</span>
             </Link>
-            <div className="flex items-center justify-center">
-              {/* Center spacing for the floating action button */}
-            </div>
             <Link
               to="/marketplace"
-              className={`flex flex-col items-center justify-center text-xs transition-colors ${
-                isActive('/marketplace') ? 'text-brand-600' : 'text-slate-400'
+              className={`flex flex-col items-center justify-center text-[10px] font-bold transition-colors ${
+                isActive('/marketplace') ? 'text-brand-600 font-extrabold' : 'text-slate-500'
               }`}
             >
               <ShoppingBag className="h-5 w-5 mb-0.5" />
@@ -543,8 +526,8 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
             </Link>
             <Link
               to="/profile"
-              className={`flex flex-col items-center justify-center text-xs transition-colors ${
-                isActive('/profile') ? 'text-brand-600' : 'text-slate-400'
+              className={`flex flex-col items-center justify-center text-[10px] font-bold transition-colors ${
+                isActive('/profile') ? 'text-brand-600 font-extrabold' : 'text-slate-500'
               }`}
             >
               <User className="h-5 w-5 mb-0.5" />

@@ -123,47 +123,47 @@ export const Landing: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Marketplace Card Preview */}
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between h-48">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between min-h-[170px]">
               <div>
                 <span className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-wider">
                   MARKETPLACE
                 </span>
-                <h3 className="font-bold text-slate-900 text-sm mt-3">fx-991EX Scientific Calculator</h3>
+                <h3 className="font-bold text-slate-900 text-sm mt-2">fx-991EX Scientific Calculator</h3>
                 <p className="text-xs text-slate-500 mt-1 line-clamp-2">High performance computing helper in perfect conditions.</p>
               </div>
-              <div className="flex justify-between items-center mt-4">
+              <div className="flex justify-between items-center mt-3 pt-2 border-t border-slate-100">
                 <span className="text-brand-600 font-bold text-base">₹950</span>
-                <span className="text-slate-400 text-xs">By Amit S. (4th Year)</span>
+                <span className="text-slate-400 text-[11px]">By Amit S. (4th Year)</span>
               </div>
             </div>
 
             {/* Lost Card Preview */}
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between h-48">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between min-h-[170px]">
               <div>
                 <span className="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 text-[10px] font-bold uppercase tracking-wider">
                   LOST WARNING
                 </span>
-                <h3 className="font-bold text-slate-900 text-sm mt-3">Black Leather Fossil Wallet</h3>
+                <h3 className="font-bold text-slate-900 text-sm mt-2">Black Leather Fossil Wallet</h3>
                 <p className="text-xs text-slate-500 mt-1 line-clamp-2">Dropped near the sports arena. Has Student ID card and cash.</p>
               </div>
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-rose-500 text-xs font-semibold">Reward Offered</span>
-                <span className="text-slate-400 text-xs">Lost 2 hours ago</span>
+              <div className="flex justify-between items-center mt-3 pt-2 border-t border-slate-100">
+                <span className="text-rose-500 text-[11px] font-semibold">Reward Offered</span>
+                <span className="text-slate-400 text-[11px]">Lost 2 hours ago</span>
               </div>
             </div>
 
             {/* Found Card Preview */}
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between h-48">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between min-h-[170px]">
               <div>
                 <span className="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 text-[10px] font-bold uppercase tracking-wider">
                   FOUND ITEM
                 </span>
-                <h3 className="font-bold text-slate-900 text-sm mt-3">Boat Over-Ear Headphones</h3>
+                <h3 className="font-bold text-slate-900 text-sm mt-2">Boat Over-Ear Headphones</h3>
                 <p className="text-xs text-slate-500 mt-1 line-clamp-2">Found sitting on cafeteria table bench. Power button works.</p>
               </div>
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-indigo-600 text-xs font-semibold">Resolved Match</span>
-                <span className="text-slate-400 text-xs">Found in Library</span>
+              <div className="flex justify-between items-center mt-3 pt-2 border-t border-slate-100">
+                <span className="text-indigo-600 text-[11px] font-semibold">Resolved Match</span>
+                <span className="text-slate-400 text-[11px]">Found in Library</span>
               </div>
             </div>
           </div>
@@ -171,23 +171,23 @@ export const Landing: React.FC = () => {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="bg-gradient-to-r from-brand-900 to-indigo-950 text-white py-16 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div className="p-4">
-            <p className="text-3xl md:text-5xl font-extrabold text-brand-300">1,200+</p>
-            <p className="text-slate-300 text-sm mt-2 font-medium">Students Connected</p>
+      <section className="bg-gradient-to-r from-brand-900 to-indigo-950 text-white py-12 px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 text-center">
+          <div className="p-2 sm:p-4">
+            <p className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-300">1,200+</p>
+            <p className="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-2 font-medium">Students Connected</p>
           </div>
-          <div className="p-4">
-            <p className="text-3xl md:text-5xl font-extrabold text-brand-300">450+</p>
-            <p className="text-slate-300 text-sm mt-2 font-medium">Items Recovered</p>
+          <div className="p-2 sm:p-4">
+            <p className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-300">450+</p>
+            <p className="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-2 font-medium">Items Recovered</p>
           </div>
-          <div className="p-4">
-            <p className="text-3xl md:text-5xl font-extrabold text-brand-300">800+</p>
-            <p className="text-slate-300 text-sm mt-2 font-medium">Products Listed</p>
+          <div className="p-2 sm:p-4">
+            <p className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-300">800+</p>
+            <p className="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-2 font-medium">Products Listed</p>
           </div>
-          <div className="p-4">
-            <p className="text-3xl md:text-5xl font-extrabold text-brand-300">99.8%</p>
-            <p className="text-slate-300 text-sm mt-2 font-medium">Successful Transactions</p>
+          <div className="p-2 sm:p-4">
+            <p className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-300">99.8%</p>
+            <p className="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-2 font-medium">Successful Handovers</p>
           </div>
         </div>
       </section>
